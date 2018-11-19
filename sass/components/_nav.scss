@@ -1,0 +1,96 @@
+/*mainNav*/
+#mainNav .mainNav{
+	height:75px;
+	z-index: 9;
+	width:1200px;
+	font-size: 14px;	
+	color:#fff;	
+}
+.mainNav a{
+	color:#fff;
+}
+.navItem{
+	float: left; 
+	z-index: 10;
+	background: #C0025A;
+	width:10%;	
+	text-align: center;
+}
+.navItem .orangeOut{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	background-color: #990033;
+	@include opacity(0);
+	@include transition(0.4s ease);
+	@include scale(0.8);
+	//@include animation(orangeOut 0.4s ease);
+	
+}
+.navItem:hover .orangeOut{
+	@include opacity(1); 
+	@include scale(1);
+	//@include animation(orangeIn 0.2s ease);
+}
+.navItem a{
+	position: relative; z-index: 0;
+	@include inline-block;
+	width:100%; 
+	padding-top:38px;
+	line-height: 37px;
+	height:37px;
+}
+.navItem a>i{
+	position: absolute;
+	top:10px;     
+	left: 50%;	
+}
+.navItem .no1{
+	margin-left: -13.5px;
+	width: 27px;
+	height: 23px;
+	background: url(../images/icons/icon.png) -329px -7px no-repeat;	
+}
+.navItem .no2{
+	margin-left: -19px;
+	background: url(../images/icons/icon.png) 0px -9px no-repeat;	
+	width: 38px;
+	height:19px;
+}
+
+/** 下拉菜单块 */
+.subNavItems{
+	position: absolute; z-index: 5;
+	top:75px; left:0; 
+	width:1198px;
+	height:274px; 
+	border: 1px solid #f00;
+	background: green;
+}
+
+/*浮动菜单*/
+.coreItems{
+	left:0; top:100px; width:200px; height:450px;
+	border: orange 1px solid;
+	z-index: 2;
+}
+.coreItems > span{
+	@include inline-block;
+	font:18px/1.5 "Microsoft YaHei";
+	font-weight: bold;
+	text-align: center;
+	padding: 10px 0px;
+	margin: 0 auto;
+	width: 100%;
+}
+.coreItems li{
+	width:33%; float:left;
+	text-align: center;
+	padding-bottom: 20px;
+	font-size: 12px;
+}
+.coreItems li img{
+	margin:0 auto;
+}

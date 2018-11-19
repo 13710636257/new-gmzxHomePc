@@ -1,0 +1,1103 @@
+@import "compass";
+@import "compass/layout"; //layout和reset 需要单独引用
+
+@import "public/variables"
+	,"public/function"
+	,"public/animate"
+	,"reset"
+ 	,"public/main"
+	;
+
+@import "sprite";
+
+@import "mixins/tab"
+	,"mixins/base"
+	,"mixins/triangle"
+	,"mixins/slideBox"
+	;
+@import 
+    "components/footer"
+    ,"components/swt"
+    ; 
+
+/* 全局配置 */
+$containerWidth:1200px;
+.container{
+	width:$containerWidth;
+}
+
+/*头部区域*/
+#topArea{	
+	height: 40px;
+	line-height: 40px;
+	width: 100%;
+	background: #F2F3F3;
+	color: #666666;
+	border-top: #766F6D 1px solid;
+	font-size: 12px;
+
+	a{
+		color: #666666;
+		font-size: 12px;
+	}
+}
+
+.top_left{
+	float:left;
+
+	span a{
+		color: #666666;
+		font-size: 12px;
+		background: url(https://static.gmzx.com/images/gmzx/index/xiantiao.jpg) right no-repeat;
+		padding: 0 10px;
+	}
+}
+
+.top_right{
+	float:right;
+	$iconHight:21px; //小图标的高度大小
+	a{	
+		z-index: 1;
+		float: left;
+		display: inline;
+		position: relative;
+		width: $iconHight;
+		height: $iconHight;
+		margin: 10px 15px 0 0;
+		i{
+			transition: all 0.3s linear 0s;
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+		&.weibo i{background-position: 0px $iconHight;background-image: url(https://static.gmzx.com/images/gmzx/index/sina.png);}
+		&.weibo i:hover{background-position: 0px 0px;}
+		&.weixin{width:23px;}
+		&.weixin i{background-position: 0px $iconHight;background-image: url(https://static.gmzx.com/images/gmzx/index/weixin.png);}
+		&.weixin i:hover{background-position: 0 0;}
+		&.weixin b{z-index:3;background-image:url(https://static.gmzx.com/images/gmzx/index/ico.png);
+			display:none;width:162px;height:171px;position: absolute;left:-135px;;top:19px;background-position:-1038px 0px;
+		}
+		&.qq{width:18px;}
+		&.qq i{background-position: 0px $iconHight;background-image: url(https://static.gmzx.com/images/gmzx/index/qq.png);}
+		&.qq i:hover{background-position:0px 0px;}
+		&.gmphone{width:19px;}
+		&.gmphone i{background-position:0px $iconHight;background-image: url(https://static.gmzx.com/images/gmzx/index/phone.png);}
+		&.gmphone i:hover{background-position:0px 0px;}
+		&.gmphone b{z-index: 2;position: absolute;left: -65px;top: 25px;display:none;background: url(https://static.gmzx.com/images/gmzx/index/ewm_bg.png) top center no-repeat;padding: 12px 1px 1px;background-size: 100%;}
+		&.gmmap{width:26px;}
+		&.gmmap i{background-position:0px $iconHight;background-image: url(https://static.gmzx.com/images/gmzx/index/map.png);}
+		&.gmmap i:hover{background-position:0px 0px;}		
+	}
+}
+
+/* logo区域 */
+.logo h1{
+	margin: 15px auto;
+	width: 919px;
+	height: 98px;
+	background: url(https://static.gmzx.com/images/gmzx/logo/top-logo.png) no-repeat;
+	&.shgmzx{background:url(https://static.gmzx.com/images/gmzx/logo/zizhilogo.png) no-repeat;}/* 资质logo */
+	&.zjgmzx{background:url(https://static.gmzx.com/images/gmzx/logo/zjlogo.png) no-repeat;}
+	&.bygmzx{background:url(https://static.gmzx.com/images/gmzx/logo/bylogo.png) no-repeat;}
+	&.thgmzx{width:919px;height:98px;background:url(https://static.gmzx.com/images/gmzx/logo/top-logo.png) no-repeat;}
+	&.zcgmzx{width:919px;height:98px;background:url(https://static.gmzx.com/images/gmzx/logo/zclogo.png) no-repeat;}
+	&.hzgmzx{background:url(https://static.gmzx.com/images/gmzx/logo/hzlogo.png) no-repeat;}
+	&.pygmzx{background:url(https://static.gmzx.com/images/gmzx/logo/pylogo.png) no-repeat;}
+	&.hdgmzx{background:url(https://static.gmzx.com/images/gmzx/logo/hdlogo.png) no-repeat;}
+	&.fsgmzx{background:url(https://static.gmzx.com/images/gmzx/logo/fslogo.png) no-repeat;}
+	a{
+		@include inline-block;
+		width: 100%;
+		height: 100%;
+		text-indent: -9999em;
+	}
+}
+/*导航区域*/
+#mainNav{
+	$navBgColor:#383838;
+	$navActiveBgColor:#d2235a; //主
+	$mainNav-width:200px;	
+	$menu-height:570px; //导航菜单高度
+	height: 30px;
+	background: $navBgColor;
+	border-style: solid;
+	border-width: 1px 0 0;
+	border-color: #A7A6AE;
+	.container{
+		z-index: 9;
+	}
+	@at-root{
+		.mainNav{
+			cursor: pointer;
+			width: $mainNav-width;
+			z-index: 2;
+			position: absolute;
+			left: 0;
+			top: -8px;
+
+			.nav-top{
+				padding-left:47px;
+				display: block;
+				background: $navActiveBgColor;
+				color: #fff;
+				font-size: 18px;
+				height: 38px;
+				line-height: 38px;
+			}
+			
+			.menu-list{
+				height: $menu-height;
+				.menu-bg{
+					width: 100%;
+					height: 100%;
+					background:$navActiveBgColor;
+					@include opacity(0.8);
+					top: 0;
+					left: 0;
+					z-index: -1;
+				}
+				.menu-main{
+					padding-top:13px;
+					li{
+						background:url(https://static.gmzx.com/images/gmzx/index/item_menu_left.png) 90% center  no-repeat;
+						height: 36px;
+						line-height:36px;
+						padding-left:30px;
+						&.hover{
+							background-color:$navActiveBgColor !important;
+							color: #fff;
+							background:url(https://static.gmzx.com/images/gmzx/index/item_menu_left_bj.png) 90% center  no-repeat;
+						}
+						em{
+							background:url(https://static.gmzx.com/images/gmzx/index/items_bg.png) no-repeat;
+							width: 30px;
+							height: 30px;
+							float: left;
+							margin: 3px 7px 0 0;
+						}
+						span{
+							font-size: 16px;
+							color: #fff;
+						}
+						&.item-1{em{background-position:0 4px;}}
+						&.item-2{em{background-position:0 -32px;}}
+						&.item-3{em{background-position:0 -68px;}}
+						&.item-4{em{background-position:0 -104px;}}
+						&.item-5{em{background-position:0 -136px;}}
+						&.item-6{em{background-position:0 -175px;}}
+						&.item-7{em{background-position:0 -212px;}}
+						&.item-8{em{background-position:0 -250px;}}
+						&.item-9{em{background-position:0 -284px;}}
+						&.item-10{em{background-position:0 -320px;}}
+						&.item-11{em{background-position:0 -358px;}}
+						&.item-12{em{background-position:0 -390px;}}
+						&.item-13{em{background-position:0 -425px;}}
+						&.item-14{em{background-position:0 -465px;}}
+						&.item-15{em{background-position:0 -500px;}}
+					}
+				}
+				.menu-sub{
+					top: 0;
+					right: 0;
+					.item_menu_con{
+						box-sizing: content-box !important;
+						background: rgba(255, 255, 255, 0.9) !important;
+						*background:#fff;
+						width: 390px;
+						height: 508px;
+						border: 1px solid $navActiveBgColor;
+						position: absolute;
+						padding: 30px;
+						display: none;
+						h2{
+							border-bottom: 1px solid rgb(148, 144, 157);
+							padding-bottom: 10px;
+							margin-bottom: 10px;
+						}
+						.index_xiangmu{
+							margin-bottom:30px;
+							dl:after{
+								content: "";
+								display: block;
+								height: 0;
+								clear: both;
+								visibility: hidden;
+							}
+							dd{
+								float: left;
+								width: 32%;
+								margin-left:1%;
+								font-size: 14px;
+								overflow:hidden;
+								text-overflow:ellipsis;
+								white-space:nowrap;
+								height: 32px;
+								line-height: 32px;
+							}
+							a{
+								text-decoration: none;
+								padding: 3px 4px;
+								position: relative;
+								@include transition(all 0.3s);
+								&:hover{
+									color: #fff;
+									background:$navActiveBgColor;
+									@include border-radius(4px);
+									@include animation(all 0.3s linear 0s);
+								}
+								span{
+									position: absolute;right: -6px;
+									top:2px;
+									@include animation(gmmove 2s infinite linear);
+								}
+							}
+						}
+					}
+				}
+			}
+		
+		}
+
+		.nav_item{
+			padding-left:$mainNav-width;
+			ul{
+				width:100%;
+
+				li{
+					$height:30px;
+					width:20%;
+					float:left;
+					height: $height;
+					a{
+						position: relative;
+						overflow: hidden;
+						color: #fff;
+						font-size: 18px;
+						@include inline-block;
+						width: 100%;
+						height: $height;
+						line-height:$height;
+						text-align: center;
+						background: url(https://static.gmzx.com/images/gmzx/index/nav_son_bj.jpg) no-repeat right;	
+
+						span{
+						    width: 100%;
+						    position: absolute;
+						    left: 0;
+						    top: 0;
+
+						    &.over{
+								background:$navActiveBgColor;
+								top: -$height;
+							}
+						}					
+					}
+					
+					a:hover{text-decoration:none;}
+				}
+			} 
+		}
+	} //@at-root
+}
+
+/*banner区域*/
+
+#bannerArea{
+	$bdHeight:570px;
+	$bdLiWidth:1920px;
+	$arrowHeight:135px;
+	height: $bdHeight; width:100%; overflow: hidden;
+	@include slideBox(100%,$bdHeight,$bdLiWidth,30px,56px,true);	
+	.arrowBox{		
+		top: $bdHeight / 2 - $arrowHeight / 2;
+		@include opacity(0);
+		.arrow{
+			width: 68px;
+			height: 135px;
+		}
+	}
+	&:hover .arrowBox{
+		@include opacity(1);
+	}
+	.prev{
+		background: url(https://static.gmzx.com/images/gmzx/article/art_ban_prev.png) no-repeat;
+	}
+	.next{
+		background: url(https://static.gmzx.com/images/gmzx/article/art_ban_next.png) no-repeat;
+	}
+}
+
+/*核心项目区域*/
+#core-item{	
+	width: 100%;
+	height: 64px;
+	line-height: 64px;
+	border-top: 1px solid #dddcdc;	
+
+	$leftWidth:255px;
+	h2{
+		padding: 0 9px 0px 0;
+		background: url(https://static.gmzx.com/images/gmzx/index/arrow_bg.jpg) no-repeat right center #777777;
+		float: left;
+		width: $leftWidth - 9;
+		line-height: 30px;
+		height: 60px;
+		color: #fff;
+		text-align: center;
+		font-size: 18px;		
+		margin-top: 2px;
+		span{
+			margin-top: 5px;
+		}
+	}
+	ul{
+		float:left;
+		width:$containerWidth - $leftWidth;
+		li{
+			float:left;
+			text-align: center;		
+			a{
+				float: left;
+				border-right: 1px solid #dddcdc;
+				padding: 0 34px;
+				i{transition:all 0.3s linear 0s;margin:10px 0 0 0;float:left;display:inline;width:45px;height:45px;background-image:url(https://static.gmzx.com/images/gmzx/index/ico.png)}
+				em{float:left;font-size:16px;margin:0 0 0 10px;}
+				i.ico_1{background-position:-237px -45px;}
+				i.ico_2{background-position:-282px -45px;}
+				i.ico_3{background-position:-327px -45px;}
+				i.ico_4{background-position:-372px -45px;}
+				i.ico_5{background-position:-417px -45px;}
+				i.ico_6{background-position:-663px -111px;}
+				i.ico_7{background-position:-618px -111px;}
+				&:hover{text-decoration:none;color:#fff;}
+				&:hover i.ico_1{background-position:-237px 0px;}
+				&:hover i.ico_2{background-position:-282px 0px;}
+				&:hover i.ico_3{background-position:-327px 0px;}
+				&:hover i.ico_4{background-position:-372px 0px;}
+				&:hover i.ico_5{background-position:-417px 0px;}
+				&:hover i.ico_6{background-position:-663px -66px;}
+				&:hover i.ico_7{background-position:-618px -66px;}
+
+			}
+			&:hover{background:#d2235a;}
+		}
+	}
+}
+
+/*热门项目*/
+#section-hotitem{
+	$hotitemheight:240px; //项目图片高度
+	padding:25px 0;
+	background:#F0F0F0;
+	overflow: hidden;
+	position: relative;
+	.hotitem{
+		text-align:center;
+		overflow:hidden;
+		position: absolute;
+		ul{
+			@include float(left);
+			li{
+				width: 390px;
+				height: $hotitemheight;
+				overflow:hidden;
+				float:left;
+				img{
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+
+
+/*资讯新闻*/
+#section-news .news{
+	border-width:2px 0;
+	border-style:solid;
+	border-color:#F6F6F6;
+	padding: 12px 0 0;
+	margin-top:50px;
+	.news-slide{
+		width: 355px;
+		height: 304px;
+		float:left;
+		overflow:hidden;
+		position:relative;
+		.hd{
+			bottom: 5px;
+			height: 15px;
+			overflow: hidden;
+			position: absolute;
+			right: 5px;
+			z-index: 1;
+			ul{
+				float:left;
+				overflow:hidden;
+				li{
+					background: #fff none repeat scroll 0 0;
+					cursor: pointer;
+					float: left;
+					height: 15px;
+					line-height: 14px;
+					margin-right: 2px;
+					text-align: center;
+					width: 15px;
+					&.on{
+						background: #f00 none repeat scroll 0 0;
+						color: #fff;
+					}
+				}
+			}
+		}
+		.bd{
+			height: 100%;
+			position: relative;
+			z-index: 0;
+		}
+		span{
+			position: absolute;
+			top: 5px;
+			display: block;
+			width: 20px;
+			height: 20px;
+			background-color: rgba(255,255,255,.9);
+			z-index: 7;
+			cursor: pointer;
+			i{
+				display: block;
+				width: 20px;
+				height: 20px;
+			}
+			&.preBtn{
+				right: 26px;
+				i{
+					background: url(https://static.gmzx.com/images/gmzx/index/gunleft.png) no-repeat 0 0px;
+				}
+			}
+			&.nextBtn{
+				right: 5px;
+				i{
+				background: url(https://static.gmzx.com/images/gmzx/index/gunright.png) no-repeat 0px 0px;
+				}
+			}
+		}
+	}
+	.news-list{
+		width: 437px;
+		border-right: 2px solid #F6F6F6;
+		padding-right: 25px;
+		float: left;
+		margin-left: 25px;
+		height: 316px;
+		overflow: hidden;
+		margin-top: -12px;
+		padding-top: 12px;
+		.news-top{
+			h4{
+				height:42px;
+				line-height:42px;
+				overflow: hidden;
+				a{
+					font-size:22px;
+				}
+			}
+			p{
+				height: 60px;
+				overflow: hidden;
+				text-indent: 2em;
+				b{
+					color:#d2235a;
+				}
+
+			}
+		}
+		.news-title{
+			padding: 4px 0px;
+			line-height: 30px;
+			border-top:#CCCCCC 1px dotted;
+			color:#666666;
+			font-size: 14px;
+			li{
+				height:30px;
+				line-height:30px;
+				overflow:hidden;
+				a{
+					height:30px;
+					line-height:30px;
+					overflow:hidden;
+					padding: 2px 8px;
+					border-radius: 4px;
+					color:#666666;
+					font-size:14px;
+					@include transition(all .3s ease);
+					&:hover{
+						background:#D0235A;
+						color:#FFFFFF;
+					}
+					&.hs{
+						color:#906ca9
+					}
+				}
+			}
+			dl{
+				width:100%; 
+				overflow:hidden;
+				dd{
+					float:left; 
+					width:50%;
+					*width:49%;
+					height: 30px;
+					line-height: 30px;
+					overflow: hidden;
+					border-radius: 4px;
+					@include transition(all .3s ease);
+					&:hover{
+						background:#D0235A; 
+						a{
+							color:#FFFFFF; 
+						}
+					}
+					a{
+						width:202px;  
+						overflow:hidden; 
+						padding: 2px 8px;
+						color: #666666;
+						font-size: 14px;
+					}
+				}
+			}
+
+		}
+	}
+
+	.news-contact{
+		float: right;
+		padding: 20px;
+		width: 295px;
+		background: #eae9ec;
+		height: 260px;
+		overflow: hidden;
+		.tt{
+			font-size:24px; 
+			color:#000; 
+			height:40px;
+		}
+		.contact-num,.outpatient-time{
+			overflow: hidden;
+			margin: 0 auto; 
+			width: 95%;
+			margin-top: 10px;
+			height: 44px;
+			background: url(https://static.gmzx.com/images/gmzx/public/gmzx/contact_right_logo.png) no-repeat -0px -51px;
+			line-height: 20px;
+			p{
+				width: 193px;
+				color: #000000;
+				padding: 0 0 0 50px;
+				*line-height: 22px;
+				&.p-t{
+					font-weight: bold;
+					font-size: 18px;
+					padding-top: 0px;
+					*padding-top: 0px;
+				}
+			}
+		}
+		.outpatient-time{
+			background: url(https://static.gmzx.com/images/gmzx/public/gmzx/contact_right_logo.png) no-repeat -0px -112px;
+		}
+		.consult{
+			ul{
+				li{
+					margin:15px 0 0 2px;
+					width: 96px;
+					height: 89px;
+					padding:0 0px 1px 0;
+					float:left;
+					text-align:center;
+					background:#d2235a;
+					&:hover{
+						background:#d2235a;
+						@include transition(all .3s linear 0s);
+						em{
+							@include transform(rotateY(180deg));
+							@include transition(all 0.50s  0s);
+						}
+					}
+					&.hover_1{
+						em{
+							background-position:0 0px;
+						}
+					}
+					&.hover_2{
+						em{
+							background-position:-62px 0px;
+						}
+					}
+					&.hover_3{
+						em{
+							background-position:-128px 0px;
+						}
+					}
+					a{
+						font-size:14px;
+						float:left;
+						color:#fff;
+						width:100%;
+						margin-top:10px;
+						padding:49px 0 0 0;
+						position:relative;
+						em{
+							position:absolute;
+							width:42px;
+							height:39px;
+							left:50%;
+							top:5px;
+							margin-left:-21px;
+							background: url(https://static.gmzx.com/images/gmzx/public/gmzx/contact_right_logo.png) no-repeat;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+/*案例*/
+#section-anlis{
+	.anlis{
+		.mingyuan_tbs{
+			margin-top:50px;
+			.slideTxtBox1{
+				.bd{
+					margin-top: 30px;
+					ul.bor{
+						border: 1px solid rgb(222, 222, 225);
+						margin-top: 100px;
+
+						.my_pic{
+							text-align: center;height: 50px;padding: 0 80px;position: relative;margin: -62px auto 10px;background: #fff;height: 125px;width: 750px;
+							.h2{
+								a{
+									position:absolute;width: 46px;height: 45px;top: 40px;opacity:0.8;
+									&:hover{
+										opacity:1;
+									}
+									&.next{
+										left:25px;background:url(../images/tab_left.png) no-repeat;
+									}
+									&.prev{
+										right:25px;background:url(../images/tab_right.png) no-repeat;
+									}
+								}
+							}
+							.bd2{
+								li{
+									width: 126px;height: 125px;float:left;margin-right:26px;
+									&.select0{
+										img{
+											opacity: 1;
+										}
+										a{
+											color:#fff;
+										}
+									}
+								}
+								img{
+									opacity:0.8;
+									&:hover{
+										opacity:1;
+									}
+								}
+							}
+						}
+						.mytabs{
+							height:530px;overflow:hidden;padding: 0 40px;
+							.mingyuanmote{
+								width: 100%;height:520px;position: relative;padding-top: 10px;display:none;
+								.fl{
+									position: absolute;top: 100px;
+									.jiantou{
+										position:absolute;left:445px;top:200px;z-index: 99;
+										img{
+											background:none;
+										}
+									}
+								}
+								.fr{
+									position: relative;height: 100%;
+									.slideTxtBox3{
+										height:100%;overflow:hidden;
+										.hd3{
+											position: absolute;top:30px;left: 0;z-index: 9;
+											li{
+												width: 50px;height: 25px;background: #262626;margin-bottom: 10px;color: #fff;line-height: 25px;text-align: center;
+												&.on{
+													background:#D0235A;
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				.hd{
+					ul{
+						height:33px;
+						li{
+							width: 299px;height:33px;float:left;margin-right: 1px;
+							span{
+								display:block;width:100%;height:100%;line-height:33px;background:#262626;color:#fff;font-size:14px;text-align:center;
+							}
+							&.on{
+								background:url(../images/jiantoua.png) no-repeat 50% 100%;padding-bottom: 7px;
+								span{
+									background:#6628B4;
+								}
+							}
+							&.more_anli{
+								a{
+									display: block;
+									width:100%;
+									height:100%;
+									line-height:33px;
+									background:#262626;
+									color:#fff;
+									font-size:14px;
+									text-align:center;
+									&:hover{
+										background:#6628B4;
+										text-decoration:none;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+#section-honor{
+	height:697px;margin-top: 50px;background:url(https://static.gmzx.com/images/gmzx/index/huanjingbg.jpg) center no-repeat fixed;overflow: hidden;
+	.honor{
+		padding-top:100px;overflow: hidden;
+		.slideTxtBox2{
+			.hd{
+				overflow: hidden;height: 38px;background: #C32757;padding: 8px 10px 0;
+				img{
+					background:none;margin-right: 6px;
+				}
+				ul{
+					height:38px;
+					li{
+						height:38px;float:left;padding: 0 20px 0 43px;line-height:38px;color:#fff;font-size:14px;text-align:center;position: relative;
+						&.on{
+							background: #fff;color: #000;
+						}
+						i{
+							width: 23px;height: 23px;background: url(https://static.gmzx.com/images/gmzx/index/inde_icon.png) no-repeat;position: absolute;left: 10px;top: 9px;
+						}
+						&.li1{
+							i{
+								background-position: -88px -27px;
+							}
+							&.on{
+								i{
+									background-position:-88px 0px;
+								}
+							}
+						}
+						&.li2{
+							i{
+								background-position: -28px -27px;
+							}
+							&.on{
+								i{
+									background-position:-28px 0px;
+								}
+							}
+						}
+						&.li3{
+							i{
+								background-position: -118px -27px;
+							}
+							&.on{
+								i{
+									background-position:-118px 0px;
+								}
+							}
+						}
+						&.li4{
+							i{
+								background-position: -58px -27px;
+							}
+							&.on{
+								i{
+									background-position:-58px 0px;
+								}
+							}
+						}
+						&.li5{
+							i{
+								background-position: -148px -27px;
+							}
+							&.on{
+								i{
+									background-position:-148px 0px;
+								}
+							}
+						}
+					}
+				}
+			}
+			
+			.bd{
+				.db_tabs{
+					padding:8px;background:#fff;overflow: hidden;
+					.m-1063{
+						height: 490px;margin:0 auto;
+					}
+					.bianzhu{
+						background:#F3F3F3;
+						.fr{
+							width: 520px;padding: 40px 10px 0 0; 
+							p{
+								font-size:14px;color:#666666;line-height:26px;
+								span{
+									color:#d10040;font-size:28px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		.mbmzd{
+			padding:8px;background:#fff;
+		}
+		.mxjz{
+			div{
+				&:after{
+					content: "";display: block;height: 0; clear: both; visibility: hidden;
+				}
+			}
+			.fl{
+				width: 300px;margin-right:10px;
+				li{
+					img{
+						width:100%;
+					}
+					float:left; width:300px;
+					&>a{
+						display:block; width:100%; height:100%; position:relative;
+						.bj{
+							position:absolute; left:0px; bottom:0px; width:100%; height:0px; background:rgba(0,0,0,.5) none scroll 0 0 !important; filter:alpha(opacity=50); opacity:0; background:#000000;transition:all .3s linear 0s; -webkit-transition:all .3s linear 0s;-moz-transition:all .3s linear 0s;
+							.text{
+								position:relative; padding:10px 30px 0px 30px;
+								.t1{
+									font-size:22px; line-height:38px; color:#FFFFFF
+								}
+								.t2{
+									font-size:14px; line-height:22px; color:#FFFFFF
+								}
+							}
+						}
+						&:hover{
+							.bj{
+								height:120px; opacity:1
+							}
+						}
+					}
+				}
+			}
+			.fr{
+				width: 874px;overflow:hidden;
+				&>div{
+					width:105%;
+				}
+				li{
+					float: left;width: 213px;height: 240px;margin: 0 7px 8px 0;
+					img{
+						width:100%;
+					}
+					&>a{
+						display:block; width:100%; height:100%; position:relative
+						.bj{
+							width:100%; height:100%; position:absolute; left:0; top:0px; z-index:2; background:rgba(0,0,0,.5) none scroll 0 0 !important; filter:alpha(opacity=50); background:#000000; transition:all .3s linear 0s; opacity:0;
+						}
+						&:hover{
+							.bj{
+								opacity:1;
+							}
+							.text{
+								opacity:1; filter:alpha(opacity=100);animation:orangeIn 0.3s ease;
+							}
+						}
+						.text{
+							width:168px; position:absolute; z-index:3; left:25px; top: 86px; font-size:14px; text-align:center; color:#FFFFFF; opacity:0; filter:alpha(opacity=0);
+							.t1{
+								font-size:16px;
+							}
+						}
+					}
+				}
+			}
+		}
+		.spzq{
+			width: 103%;
+			li{
+				width: 384px;height: 240px;float: left;margin: 0 10px 10px 3px;
+				img{
+					width:100%;
+				}
+			}
+		}
+	}
+}
+
+
+#subNav{
+	padding:25px 0;width:100%;background:url(https://static.gmzx.com/images/gmzx/index/footer_top_bj.jpg);
+	.container{
+		padding: 30px 0;
+	}
+	.footer_logo_nav{
+		width: 355px;
+		.footer_logo{
+			width:100%;height:85px;
+			a{
+				width:100%;float:left;display:inline;text-indent:-9999em;height:100%;background:url(https://static.gmzx.com/images/gmzx/index/foot_gmlogo.png) no-repeat;
+				&.zcgmzx{
+					width:100%;float:left;display:inline;text-indent:-9999em;height:100%;background:url(https://static.gmzx.com/images/gmzx/index/foot_zclogo.png) no-repeat;
+				}
+			}
+		}
+		.foot_lianxi{
+			line-height: 26px;margin-top: 20px;
+			p{
+				color:#a7a7a7;font-size:14px;
+			}
+		}
+		.foot_media{
+			height: 36px;margin-top:10px;
+			a{
+				float:left;
+				z-index:99999;position:relative;width: 36px;height: 36px;margin:0px 15px 0 0;
+				i{
+					transition:all 0.3s linear 0s;display:block;width:100%;height:100%;background-image:url(https://static.gmzx.com/images/gmzx/index/foot_icon1.png);
+				}
+				&.weibo i{
+					background-position: 0px 85px;
+					&:hover{
+						background-position:0px 121px;
+					}
+				}
+				&.weixin{
+					i{
+						background-position: -52px 85px;
+						&:hover{
+							background-position:-52px 121px;
+						}
+					}
+					b{
+						z-index:99999999999;background-image:url(https://static.gmzx.com/images/gmzx/index/foot_erweima.png);width:162px;height:171px;left: -8px;top: -175px;position: absolute;display:none;
+					}
+				}
+				&.qq i{
+					background-position:-104px 85px;
+					&:hover{
+						background-position:-104px 121px;
+					}
+				}
+				&.weidian i{
+					background-position:-157px 85px;
+					&:hover{
+						background-position:-157px 121px;
+					}
+				}
+				&.gmphone{
+					i{
+						background-position:-209px 85px;
+						&:hover{
+							background-position:-209px 121px;
+						}
+					}
+					b{
+						z-index: 99999999999;position: absolute;left: -58px;top: -165px;display: none;background: url(https://static.gmzx.com/images/gmzx/index/ewm_bg2.png) top center no-repeat;padding: 1px 1px 12px;background-size: 100%;
+					}
+				}
+				&.gmmap i{
+					background-position:-262px 85px;
+					&:hover{
+						background-position:-262px 121px;
+					}
+				}
+			}
+			span{
+				float:left;
+			}
+		}
+	}
+	.footermenu{
+		width:620px;overflow:hidden;
+		.footermenu_div{
+			width:130px;float:left;overflow:hidden;display:inline;margin:5px 0 0 25px;
+			a{
+				color:#a7a7a7;
+			}
+			h3{
+				height:24px;line-height:22px;width:100%;overflow:hidden;border-radius: 4px;
+				a{
+					float:left;display:inline;width:100%;font-size:18px;
+					&:hover{
+						text-decoration:none;color:#d2235a;
+					}
+					i{
+						@include float(left);
+						margin:0;background-image:url(https://static.gmzx.com/images/gmzx/index/ico.png);width:29px;height:24px;
+						&.ico_1{
+							background-position:0px -129px;
+						}
+						&.ico_2{
+							background-position:-29px -129px;
+						}
+						&.ico_3{
+							background-position:-58px -129px;
+						}
+						&.ico_4{
+							background-position:-94px -129px;
+						}
+					}
+					em{
+						@include float(left);
+					}
+				}
+			}
+			ul{
+				width:120px;float:left;display:inline;margin:10px 0 0 22px;
+				li{
+					float:left;display:inline;width:100%;height: 28px;line-height: 28px;overflow:hidden;
+					a{
+						transition:all 0.2s linear 0s;float:left;display:inline;padding:0 8px;
+						&:hover{
+							border-radius:3px;text-decoration:none;color:#fff;background:#d2235a;
+						}
+					}
+				}
+			}
+
+		}
+	}
+}
+.footer_beian{height: 37px;line-height: 37px;width: 100%;color: #a7a7a7;text-align:center;background:#000;}
+.footer_beian span{padding:0 25px;}
+/*友情链接*/
+.firendlinks{line-height: 26px;width: 100%;color: #a7a7a7;background:rgb(255,255,255);font-size:12px;padding: 10px 0;}
+.firendlinks span{padding:0 25px 0 0;}
+.firendlinks a{color: #333;}
+
+

@@ -1,0 +1,23 @@
+/* 定义基本色调 */
+.bg-black, .bg-blue, .bg-cyan, .bg-green, .bg-orange, .bg-red{
+	color: #fff !important;
+}
+.bg-blue{
+	background-color: $bg-blue !important;	
+}
+.bg-cyan{
+	background-color: $bg-cyan !important;	
+}
+.bg-green{
+	background-color: $bg-green !important;	
+}
+.bg-orange{
+	background-color: $bg-orange !important;	
+}
+.bg-red{
+	background-color: $bg-red !important;	
+}
+.bg-grey{
+	background-color: $bg-grey !important;
+	color: #666 !important;
+}

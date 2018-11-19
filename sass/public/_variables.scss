@@ -1,0 +1,15 @@
+/* 全局变量 */
+/*最低版本支持ie7*/
+$browser-minimum-versions: ("ie":"7");
+
+$bgColor-top:#ededed;  //顶部背景色
+$bgColor-base:#555;
+$textColor:#555; //文本默认颜色
+$aColor:#3d3f4b;  //链接默认颜色
+$border-color:#E1E1E1;  //边框的颜色
+
+$fontSize-base:14px !default;
+$baseWidth:1200px;
+$gray:#ccc !default; 
+
+/* 头部区域变量 */

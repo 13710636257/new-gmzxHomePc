@@ -1,0 +1,97 @@
+@import "compass/utilities/sprites/base";
+
+// General Sprite Defaults
+// You can override them before you import this file.
+$gmsprite-sprite-dimensions : false !default;
+$gmsprite-use-percentages   : false !default;
+$gmsprite-position          : 0% !default;
+$gmsprite-spacing           : 0 !default;
+$gmsprite-repeat            : no-repeat !default;
+$gmsprite-prefix            : '' !default;
+$gmsprite-clean-up          : true !default;
+$gmsprite-layout            : vertical !default;
+$gmsprite-inline            : false !default;
+$gmsprite-sort-by           : 'none' !default;
+$gmsprite-class-separator   : $default-sprite-separator !default;
+$gmsprite-sprite-base-class : ".gmsprite#{$gmsprite-class-separator}sprite" !default;
+
+  
+ // These variables control the generated sprite output
+ // You can override them selectively before you import this file.
+ 
+   $gmsprite-jingyu-position: $gmsprite-position !default;
+   $gmsprite-jingyu-spacing:  $gmsprite-spacing !default;
+   $gmsprite-jingyu-repeat:   $gmsprite-repeat !default;
+ 
+   $gmsprite-pangxie-position: $gmsprite-position !default;
+   $gmsprite-pangxie-spacing:  $gmsprite-spacing !default;
+   $gmsprite-pangxie-repeat:   $gmsprite-repeat !default;
+ 
+
+ $gmsprite-sprites: sprite-map("gmsprite/*.png",
+ 
+   $gmsprite-jingyu-position: $gmsprite-jingyu-position, 
+   $gmsprite-jingyu-spacing:  $gmsprite-jingyu-spacing, 
+   $gmsprite-jingyu-repeat:   $gmsprite-jingyu-repeat,
+ 
+   $gmsprite-pangxie-position: $gmsprite-pangxie-position, 
+   $gmsprite-pangxie-spacing:  $gmsprite-pangxie-spacing, 
+   $gmsprite-pangxie-repeat:   $gmsprite-pangxie-repeat,
+ 
+ $layout   : $gmsprite-layout,
+ $cleanup  : $gmsprite-clean-up,
+ $spacing  : $gmsprite-spacing,
+ $position : $gmsprite-position,
+ $sort-by  : $gmsprite-sort-by
+ );
+
+
+// All sprites should extend this class
+// The gmsprite-sprite mixin will do so for you.
+@if $gmsprite-inline {
+  #{$gmsprite-sprite-base-class} {
+    background-image: inline-sprite($gmsprite-sprites);
+  } 
+} @else {
+  #{$gmsprite-sprite-base-class} {
+    background-image: sprite-url($gmsprite-sprites);
+    background-repeat: no-repeat;
+  }
+}
+//sass functions to return the dimensions of a sprite image as units
+
+  @function gmsprite-sprite-width($name) {
+    @return sprite-width($gmsprite-sprites, $name);
+  }
+
+  @function gmsprite-sprite-height($name) {
+    @return sprite-height($gmsprite-sprites, $name);
+  }
+
+
+// Use this to set the dimensions of an element
+// based on the size of the original image.
+@mixin gmsprite-sprite-dimensions($name) {
+  @include sprite-dimensions($gmsprite-sprites, $name)
+}
+
+// Move the background position to display the sprite.
+@mixin gmsprite-sprite-position($name, $offset-x: 0, $offset-y: 0, $use-percentages: $gmsprite-use-percentages) {
+  @include sprite-background-position($gmsprite-sprites, $name, $offset-x, $offset-y, $use-percentages)
+}
+
+// Extends the sprite base class and set the background position for the desired sprite.
+// It will also apply the image dimensions if $dimensions is true.
+@mixin gmsprite-sprite($name, $dimensions: $gmsprite-sprite-dimensions, $offset-x: 0, $offset-y: 0, $use-percentages: $gmsprite-use-percentages, $separator: $gmsprite-class-separator) {
+  @extend #{$gmsprite-sprite-base-class};
+  @include sprite($gmsprite-sprites, $name, $dimensions, $offset-x, $offset-y, $use-percentages, $separator: $separator);
+}
+
+@mixin gmsprite-sprites($sprite-names, $dimensions: $gmsprite-sprite-dimensions, $prefix: sprite-map-name($gmsprite-sprites), $offset-x: 0, $offset-y: 0, $use-percentages: $gmsprite-use-percentages, $separator: $gmsprite-class-separator) {
+  @include sprites($gmsprite-sprites, $sprite-names, $gmsprite-sprite-base-class, $dimensions, $prefix, $offset-x, $offset-y, $use-percentages, $separator: $separator)
+}
+
+// Generates a class for each sprited image.
+@mixin all-gmsprite-sprites($dimensions: $gmsprite-sprite-dimensions, $prefix: sprite-map-name($gmsprite-sprites), $offset-x: 0, $offset-y: 0, $use-percentages: $gmsprite-use-percentages, $separator: $gmsprite-class-separator) {
+  @include gmsprite-sprites(jingyu pangxie, $dimensions, $prefix, $offset-x, $offset-y, $use-percentages, $separator: $separator);
+}

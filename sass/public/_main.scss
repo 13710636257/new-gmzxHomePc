@@ -1,0 +1,15 @@
+.container{
+	width:$baseWidth; 
+}
+
+.slideBox li{
+	@include scaleX(1.05); @include scaleY(1.05);
+}
+.slideBox li.on{
+	@include transition(transform 4s linear);
+	@include scaleX(1);
+	@include scaleY(1);
+}
+
+
+.font-clear{ font-size: 0;}

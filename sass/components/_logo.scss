@@ -1,0 +1,27 @@
+/*logoArea*/
+#logoArea{
+	height:106px;
+}
+#logoArea .leftNav{  
+	/*固定高的垂直居中*/
+	height:106px;
+	position: relative;
+	top:50px;
+	margin-top: -15px;
+}
+#logoArea .leftNav li{ 
+	float: left;	
+	height:30px;
+	line-height:30px;
+	padding: 3px 12px;
+}
+#logoArea .leftNav li a{	
+	text-decoration: none;
+}
+#logoArea .leftNav li a:hover{
+	//color:#fff;
+	text-decoration:none; 
+	padding-bottom: 5px;
+	//background-color:#3d3f4b;
+	border-bottom: #3d3f4b 2px solid;
+}

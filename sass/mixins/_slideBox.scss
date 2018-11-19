@@ -1,0 +1,205 @@
+/**
+ * [slideBox description]
+ * @param  {[type]} $type: 
+ *  1 通栏居中多图片切换，显示一张
+ * 	2 通栏居中多图片切换，显示一张，带前后图预览
+ * @return {[type]}        [description]
+ */
+/* 轮播插件公共样式 */
+%slideBoxHdLi{ //占位选择器
+	cursor:pointer;
+	overflow:hidden; line-height:9999px; 
+	@include inline-block;
+	@include opacity(0.7);
+}
+
+/*
+effect 效果不一样，则动态生成的html不一样， left会生成tempWrap以及克隆li  fold渐隐效果则不会生成
+ */
+.slideBox{ 
+	position:relative; overflow:hidden; z-index:0;width:100%;
+	.arrowBox{
+		position: absolute;		
+		cursor: pointer;
+		z-index: 3;
+
+		.arrow{
+			position:absolute;z-index:4;cursor:pointer; height: 100%; top:0px;	
+			&.prev{
+				left:8%; 
+			}	
+			&.next{ left:auto;	right:8%;}	
+		}	
+	}
+
+	.maskBg{  //三栏幻灯片，左右区域的遮罩层
+		display:block;  position:absolute;  height:100%;
+		left:0; top:0; width:100%; background:#000; 
+		@include opacity(0.6);
+	}
+	.prevStop{ display:none;}
+	.nextStop{ display:none;}
+	.tempWrap{ overflow:visible !important; height: 100%; margin: 0 auto;}	
+	.bd{ 
+		position:relative; z-index:1;  margin:0 auto;
+		ul{ position:relative; z-index:0; height:100%; margin:0 auto;}
+		li{	
+			height:100%; position: relative; overflow: hidden;margin:0 auto;	
+			.bdContent{
+				position: absolute; height:100%;
+				left:50%; 
+			}
+			img{
+				@include scale(1,1);
+				@include transition(transform 4s linear 0s);
+			}
+			&.active img{				
+				@include scale(1.05,1.05);
+			} 
+		}
+	}
+	.hd{ 
+		position:relative; z-index:2; bottom: 15px;
+		ul{			
+			position: absolute;z-index: 2; overflow:hidden; width:100%; height:30px;line-height:30px;text-align: center;
+
+			&.num{ //普通的文字
+				li{
+					margin-right:2px; margin-bottom: 5px; cursor:pointer; 
+					@include inline-block;
+				 	width:16px; height:16px; line-height:14px; text-align:center; background:#fff; 
+				 	&.on{ background:#f60; color:#fff; }
+				 }
+			}
+			&.circle{  //圆形
+				li{
+					width:11px; height:11px; background:url(https://static.gmzx.com/images/public/dot-black.png) 0 0; 
+					@extend %slideBoxHdLi;
+					&.on{ @include opacity(1);}				
+				}
+			}
+			&.rectangle{ //长方形，如果要改颜色，请重写 background: !important;
+				li{
+					width:30px; height:6px; background:url(https://static.gmzx.com/images/public/dot-rectangle.png) 0 0; 
+					@extend %slideBoxHdLi;
+					&.on{ @include opacity(1);}	
+				}
+			}
+		}
+	}	
+}
+
+/**
+ * 幻灯片切换组件： 支持 fold类型的带背景切换  支持leftLoop类型
+ * @param  {[type]} $bd-width:100%   slideBox的宽度
+ * @param  {[type]} $bd-height:570px    主内容区域的高度
+ * @param  {[type]} $bd-li-width:1920px   主内容区域的宽度
+ * @param  {[type]} $hd-height:30px       控制区的高度
+ * @param  {[type]} $arrow-font-size:56px 方向区域如果是文字的话，字体大小 iconfont
+ * @param  {[type]} $bd-auto:true      内容区域是否平铺背景
+ * 基本结构： 
+ *  div.slideBox > (div.bd >ul >li > div.bdContent) 
+ *  			 + (div.hd > ul.circle) 
+ *  			 + (div.arrowBox > span.prev.text.arrow > a >iconfont)   iconfont形式箭头
+ *  			 + div.arrowBox > div.next>span.maskBg>a   
+ 
+ */
+@mixin slideBox($bd-width:100%,$bd-height:570px,$bd-li-width:1920px,$hd-height:30px,$arrow-font-size:56px,$bd-auto:true) {
+	.slideBox{ 
+		height:$bd-height;
+		.bd{
+			height:$bd-height;
+
+			@if $bd-auto==false {
+				width: $bd-width;  left:50%; width:$bd-li-width; margin-left: -($bd-li-width / 2);
+				li{
+					width:$bd-li-width;
+				}
+			}
+
+			li{
+				.bdContent{
+					width:$bd-li-width; margin-left: -($bd-li-width / 2);
+				}
+			}
+		}		
+		.hd{
+			height:$hd-height; 
+			ul{
+				height:$hd-height; line-height:$hd-height;
+			}	
+			li{
+				margin: 0 5px;				
+			}
+		}
+		.arrowBox{
+			width:$bd-width;
+		}
+		.iconfont{font-size: $arrow-font-size; line-height: $arrow-font-size;}
+		@if $arrow-font-size > 0 {
+			.next,.prev{ margin-top:-($arrow-font-size / 2); }	
+			.prev{
+				&.text{ top:50%; height: auto; }  // 左右区域里面的箭头是文本内容的时候 
+				&:hover{ color:darken($textColor,10%); }
+			}
+			.next{
+				&.text{ top:50%;  height: auto; }
+				&:hover{ color:darken($textColor,10%); }
+			}
+		} 	
+	}
+}
+
+/*
+ *幻灯片组件
+ * div.slideBox>(div.hd>ul>li> + );
+*/
+/* @mixin Slideshow($slide-bdlishape:round,$type:1,$slide-bdwidth:100%,$slide-slideheight:100%,$slide-hdbottom:20px) {
+	.slideBox{ 
+		height:$slide-slideheight;
+		.hd{
+			left: 0;bottom: $slide-hdbottom;position: absolute;z-index: 1; width:100%;text-align: center;	
+			li{
+				margin: 0 5px;
+				@if $slide-bdlishape == round {
+					width:11px; height:11px; background:url(https://static.gmzx.com/images/common/dot-black.png) 0 0;
+					@extend %slideBoxHdLi;
+					&.on{ @include opacity(1);}				
+				}@else if $slide-bdlishape == rectangle{
+					width:30px; height:6px; background:url(https://static.gmzx.com/images/common/dot-rectangle.png) 0 0;
+					@extend %slideBoxHdLi;
+					&.on{ @include opacity(1);}	
+				}@else if $slide-bdlishape == num{
+					margin-right:2px; margin-bottom: 5px; cursor:pointer; 
+					@include inline-block;
+				 	width:16px; height:16px; line-height:14px; text-align:center; background:#fff; 
+				 	&.on{ background:#f60; color:#fff; }
+				}
+			}
+		}
+		.bd{
+			width: $slide-bdwidth; height:100%; margin:0 auto;position:relative;
+			ul{
+				height: 100%;
+				li{
+					width: 100%; height: 100%;
+				}
+			}
+		}
+		@if $type == 1{			
+			.prev {position:absolute;z-index:3;cursor:pointer; 
+				&:hover{ color:darken($textColor,10%); }
+			}
+			.next {position:absolute;z-index:3;cursor:pointer; 
+				&:hover{ color:darken($textColor,10%); }
+			}
+			.prev{left:8%; top:50%; margin-top:-35px; }
+			.next{left:auto;right:8%; top:50%; margin-top:-35px; }
+			.prevStop{ display:none;}
+			.nextStop{ display:none;}
+			.tempWrap{ overflow:visible !important }	
+			.iconfont{font-size: 56px; line-height: 66px;}
+		}
+
+	}
+} */

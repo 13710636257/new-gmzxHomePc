@@ -1,0 +1,499 @@
+@charset "utf-8";
+
+#topArea {
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+    background: #F2F3F3;
+    color: #666666;
+    border-top: #766F6D 1px solid;
+    font-size: 12px;
+    a{
+        color: #666666;
+        font-size: 12px; 
+    }
+    .container {
+         width: 1200px;
+        .top_left {
+            float: left;
+            span{
+                a{
+                   color: #666666;
+                   font-size: 12px;
+                   background: url(https://static.gmzx.com/images/gmzx/index/xiantiao.jpg) right no-repeat;
+                   padding: 0 10px;  
+                }
+            }
+        }
+        .top_right {
+            float: right;
+            a{
+                z-index: 1;
+                float: left;
+                display: inline;
+                position: relative;
+                width: 21px;
+                height: 21px;
+                margin: 10px 15px 0 0;
+                i{
+                transition: all 0.3s linear 0s;
+                display: block;
+                width: 100%;
+                height: 100%;
+                }
+                
+                .weibo{
+                    i{
+                        background-position: 0px 21px;
+                        background-image: url(https://static.gmzx.com/images/gmzx/index/sina.png);  
+                        &:hover{
+                            background-position: 0px 0px; 
+                        }
+                    }
+                }
+                
+                .weixin{
+                    i{
+                        background-position: 0px 21px;
+                        background-image: url(https://static.gmzx.com/images/gmzx/index/weixin.png);
+                        &:hover{
+                            background-position: 0 0; 
+                        }
+                    }
+                    b{
+                       z-index: 3;
+                        background-image: url(https://static.gmzx.com/images/gmzx/index/ico.png);
+                        display: none;
+                        width: 162px;
+                        height: 171px;
+                        position: absolute;
+                        left: -135px;
+                        top: 19px;
+                        background-position: -1038px 0px; 
+                    }
+                }
+                
+                .qq{
+                     width: 18px;
+                     i{
+                         background-position: 0px 21px;
+                         background-image: url(https://static.gmzx.com/images/gmzx/index/qq.png); 
+                        &:hover{
+                           background-position: 0px 0px;
+                        }
+                     }
+                }
+                .gmphone{
+                    width: 19px;
+                    i{
+                        background-position: 0px 21px;
+                        background-image: url(https://static.gmzx.com/images/gmzx/index/phone.png); 
+                        &:hover{
+                          background-position: 0px 0px;
+                        }
+                    }
+                    b{
+                        z-index: 2;
+                        position: absolute;
+                        left: -65px;
+                        top: 25px;
+                        display: none;
+                        background: url(https://static.gmzx.com/images/gmzx/index/ewm_bg.png) top center no-repeat;
+                        padding: 12px 1px 1px;
+                        background-size: 100%;
+                    }
+                }
+                .gmmap {
+                    width: 26px; 
+                    i{
+                       background-position: 0px 21px;
+                       background-image: url(https://static.gmzx.com/images/gmzx/index/map.png); 
+                       &:hover{
+                          background-position: 0px 0px; 
+                       }
+                    }
+                }
+                
+                
+            }
+            
+        }
+    
+    
+    }
+    
+}
+
+.logo{
+    h1{
+        margin: 15px auto;
+        width: 1215px;
+        height: 143px;
+        background: url(https://static.gmzx.com/images/gmzx/logo/top-logo.png) no-repeat; 
+        .shgmzx{
+            background: url(https://static.gmzx.com/images/gmzx/logo/zizhilogo.png) no-repeat;
+        }
+        .zjgmzx{
+            background: url(https://static.gmzx.com/images/gmzx/logo/zjlogo.png) no-repeat; 
+        }
+        .bygmzx{
+            background: url(https://static.gmzx.com/images/gmzx/logo/bylogo.png) no-repeat;
+        }
+        .thgmzx {
+            width: 919px;
+            height: 98px;
+            background: url(https://static.gmzx.com/images/gmzx/logo/top-logo.png) no-repeat;
+        }
+        .zcgmzx {
+            width: 919px;
+            height: 98px;
+            background: url(https://static.gmzx.com/images/gmzx/logo/zclogo.png) no-repeat;
+        }
+        .pygmzx {
+            background: url(https://static.gmzx.com/images/gmzx/logo/pylogo.png) no-repeat;
+        }
+        .hdgmzx {
+            background: url(https://static.gmzx.com/images/gmzx/logo/hdlogo.png) no-repeat;
+        }
+        .fsgmzx {
+            background: url(https://static.gmzx.com/images/gmzx/logo/fslogo.png) no-repeat;
+        }
+        a{
+            display: inline-block;
+            vertical-align: middle;
+            *vertical-align: auto;
+            *zoom: 1;
+            *display: inline;
+            width: 100%;
+            height: 100%;
+            text-indent: -9999em;
+        }
+    }
+}
+
+
+
+
+
+//导航栏
+#mainNav{
+    height: 48px;
+    background: #d2235a;
+    border-style: solid;
+    border-width: 1px 0 0;
+    border-color: #A7A6AE;
+   
+    .container {
+        z-index: 9;
+        .mainNav {
+            cursor: pointer;
+            width: 200px;
+            z-index: 2;
+            position: absolute;
+            left: 0;
+            top: -8px;
+            .nav-top {
+                padding-left: 47px;
+                display: block;
+                background: #d2235a;
+                color: #fff;
+                font-size: 18px;
+                height: 38px;
+                line-height: 38px;
+            }
+            .menu-list {
+                display: none;
+                height: 570px;
+                .menu-main {
+                    padding-top: 13px;
+                    li {
+                        background: url(https://static.gmzx.com/images/gmzx/index/item_menu_left.png) 90% center no-repeat;
+                        height: 36px;
+                        line-height: 36px;
+                        padding-left: 30px;
+                        &:hover{
+                           background-color: #d2235a !important;
+                            color: #fff;
+                            background: url(https://static.gmzx.com/images/gmzx/index/item_menu_left_bj.png) 90% center no-repeat;
+                        }
+                        em{
+                          background: url(https://static.gmzx.com/images/gmzx/index/items_bg.png) no-repeat;
+                            width: 30px;
+                            height: 30px;
+                            float: left;
+                            margin: 3px 7px 0 0;
+                        }
+                        span {
+                            font-size: 16px;
+                            color: #fff;
+                        }
+                        .item-1{
+                            em{
+                               background-position: 0 4px; 
+                            }
+                        }
+                        .item-2{
+                            em{
+                               background-position: 0 -32px;
+                            }
+                        }
+                        .item-3{
+                            em{
+                               background-position: 0 -68px; 
+                            }
+                        }
+                        .item-4{
+                            em{
+                               background-position: 0 -104px;
+                            }
+                        }
+                        .item-6{
+                            em{
+                               background-position: 0 -175px;
+                            }
+                        }
+                        .item-7{
+                            em{
+                               background-position: 0 -212px;
+                            }
+                        }
+                        .item-8{
+                            em{
+                                background-position: 0 -250px;
+                            }
+                        }
+                        .item-9{
+                            em{
+                              background-position: 0 -284px;
+                            }
+                        }
+                        .item-10{
+                            em{
+                               background-position: 0 -320px;
+                            }
+                        }
+                        .item-11{
+                            em{
+                                background-position: 0 -358px;
+                            }
+                        }
+                        .item-12{
+                            em{
+                              background-position: 0 -390px;
+                            }
+                        }
+                        .item-13{
+                            em{
+                                background-position: 0 -425px;
+                            }
+                        }
+                        .item-14{
+                            em{
+                              background-position: 0 -465px;
+                            }
+                        }
+                        .item-15{
+                            em{
+                              background-position: 0 -500px;
+                            }
+                        }
+                    
+                   }
+                }
+                
+                .menu-bg {
+                    width: 100%;
+                    height: 100%;
+                    background: #d2235a;
+                    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+                    opacity: 0.8;
+                    top: 0;
+                    left: 0;
+                    z-index: -1;
+                    .menu-sub {
+                        top: 0;
+                        right: 0;  
+                        .item_menu_con {
+                            box-sizing: content-box !important;
+                            background: rgba(255, 255, 255, 0.9) !important;
+                            *background: #fff;
+                            width: 390px;
+                            height: 508px;
+                            border: 1px solid #d2235a;
+                            position: absolute;
+                            padding: 30px;
+                            display: none;
+                            h2 {
+                                border-bottom: 1px solid #94909d;
+                                padding-bottom: 10px;
+                                margin-bottom: 10px;
+                            }
+                            .index_xiangmu {
+                                margin-bottom: 30px;
+                                dl{
+                                    &:after {
+                                        content: "";
+                                        display: block;
+                                        height: 0;
+                                        clear: both;
+                                        visibility: hidden;
+                                    }
+                                    dd {
+                                        float: left;
+                                        width: 32%;
+                                        margin-left: 1%;
+                                        font-size: 14px;
+                                        overflow: hidden;
+                                        text-overflow: ellipsis;
+                                        white-space: nowrap;
+                                        height: 32px;
+                                        line-height: 32px; 
+                                        
+                                        a {
+                                            text-decoration: none;
+                                            padding: 3px 4px;
+                                            position: relative;
+                                            -moz-transition: all 0.3s;
+                                            -o-transition: all 0.3s;
+                                            -webkit-transition: all 0.3s;
+                                            transition: all 0.3s;
+                                            &:hover{
+                                                color: #fff;
+                                                background: #d2235a;
+                                                -moz-border-radius: 4px;
+                                                -webkit-border-radius: 4px;
+                                                border-radius: 4px;
+                                                -moz-animation: all 0.3s linear 0s;
+                                                -webkit-animation: all 0.3s linear 0s;
+                                                animation: all 0.3s linear 0s; 
+                                            }
+                                            span {
+                                                position: absolute;
+                                                right: -6px;
+                                                top: 2px;
+                                                -moz-animation: gmmove 2s infinite linear;
+                                                -webkit-animation: gmmove 2s infinite linear;
+                                                animation: gmmove 2s infinite linear;
+                                            }
+                                        }
+
+                                    }
+                                }
+           
+                            }
+                        }
+                    }
+                }
+                
+            }
+        }
+        
+        .nav_item{
+              padding-left: 200px;
+              ul {
+                width: 100%;
+                li {
+                    width: 20%;
+                    float: left;
+                    height: 30px;
+                    a {
+                        position: relative;
+                        overflow: hidden;
+                        color: #fff;
+                        font-size: 18px;
+                        display: inline-block;
+                        vertical-align: middle;
+                        *vertical-align: auto;
+                        *zoom: 1;
+                        *display: inline;
+                        width: 100%;
+                        height: 30px;
+                        line-height: 30px;
+                        text-align: center;
+                        background: url(https://static.gmzx.com/images/gmzx/index/nav_son_bj.jpg) no-repeat right;
+                        &:hover {
+                            text-decoration: none;
+                        }
+                        span {
+                            width: 100%;
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                           .over {
+                                background: #d2235a;
+                                top: -30px;
+                            } 
+                        }
+                    }
+                    
+                }
+            }
+        }
+   
+    }
+}
+
+//背景轮播图
+#bannerArea {
+  height: 570px;
+  width: 100%;
+  overflow: hidden;
+    .slideBox {
+        height: 570px;
+         .bd {
+           height: 570px;
+              li{
+                 .bdContent {
+                  width: 1920px;
+                  margin-left: -960px;
+                } 
+             }
+        }
+          .hd {
+            height: 30px;
+                ul {
+                   height: 30px;
+                   line-height: 30px;
+                   li {
+                      margin: 0 5px;
+                    }
+                 }
+          }
+        .arrowBox {
+              width: 100%;
+              top:217.5px;
+              filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+              opacity: 0;
+              .arrow {
+              width: 68px;
+              height: 135px;
+            }
+              .next{   
+                margin-top: -28px;
+                background: url(https://static.gmzx.com/images/gmzx/article/art_ban_next.png) no-repeat;
+                &:hover{
+                  color: #3c3c3c;
+                }
+                .text {
+                  top: 50%;
+                  height: auto;
+                }
+            }
+              .prev{
+                margin-top: -28px;
+                background: url(https://static.gmzx.com/images/gmzx/article/art_ban_prev.png) no-repeat;
+                &:hover{
+                  color: #3c3c3c;
+                }
+                .text{
+                  top: 50%;
+                  
+                  height: auto;    
+            }
+        }
+     }
+  }
+}
+
+
+

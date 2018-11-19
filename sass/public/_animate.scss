@@ -1,0 +1,58 @@
+
+$default-animation-duration:1s; //默认动画时间
+$default-animation-timing-function:ease; //动画效果 ease linear ease-in ease-out ease-in-out cubic-bezier($number, $number, $number, $number)
+
+@include keyframes(orangeOut){
+	0%{
+		@include scale(1);
+		@include opacity(1);
+	}
+	100%{
+		@include scale(0.8);
+		@include opacity(0);
+	}
+};
+
+@include keyframes( orangeIn) {  
+	0% {
+	 @include scale(0.8);
+	 @include opacity(0);
+	}
+	100% {
+	 @include scale(1);
+	 @include opacity(1);
+	 //filter:alpha(opacity:100);
+
+	}
+}
+
+@include keyframes(shake1){
+	0%{
+		@include translateY(0px);
+	}
+	25% {
+		@include translateY(-2px);
+	}
+	50%{
+		@include translateY(0px);
+	}
+	75% {
+		@include translateY(-2px);
+	}
+	100% {
+		@include translateY(0px);
+	}
+}
+
+
+@include keyframes(gmmove){
+	0%,80%,84%,90%,96%,100%{@include translateY(0);}
+	88%{@include translateY(-6px);}
+	92%{@include translateY(-3px);}
+}
+
+@-webkit-keyframes gmmove{
+	0%,80%,84%,90%,96%,100%{@include translateY(0);}
+	88%{@include translateY(-6px);}
+	92%{@include translateY(-3px);}
+}

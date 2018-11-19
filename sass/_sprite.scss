@@ -1,0 +1,61 @@
+@import "gmsprite/*.png";
+@import "items/*.png";
+@include all-gmsprite-sprites;
+@include all-items-sprites;
+
+$sprite-spacing:10px;
+$gmsprite-sprite-dimensions:true;
+$gmsprite-layout: smart;
+$disable-magic-sprite-seletors: true;
+
+$items-sprite-dimensions:true;
+$items-layout: smart;
+$items-magic-sprite-seletors: true; 
+
+
+// api 见 https://compass-style.org/reference/compass/helpers/sprites/#sprite-map 
+$sprites:sprite-map("items/*.png", $spacing:0, $layout: vertical); 
+$pprVal: 100; 
+// 去单位 
+@function strip-units($number) { @return $number / ($number * 0 + 1); } 
+
+@function addRemUnit($val, $unit: px) { 
+	$val : strip-units($val);
+	@if $val !=0 { 
+		$val: $val/$pprVal; 
+		$val: $val + rem; 
+	} 
+	@return $val; 
+} 
+// 将图片精灵的图片大小和位置进行缩放。实现方式通过把单位由px变成rem 
+@mixin rem-sprite($sprites, $name) { 
+	//background-repeat: no-repeat; background-image: sprite-url($sprites); 
+	//雪碧图路径 
+	background-position: addRemUnit( nth(sprite-position($sprites, $name), 1) )
+		addRemUnit(strip-units(nth(sprite-position($sprites, $name), 2))) !important; 
+	//background-size: addRemUnit(sprite-width($sprites)) addRemUnit(sprite-height($sprites)); 
+} 
+@mixin rem-sprite-size($sprites, $name) { 
+	height: addRemUnit(image-width(sprite-file($sprites, $name))); 
+	//目标图片高度 rem
+	width: addRemUnit(image-height(sprite-file($sprites, $name))); 
+	//目标图片宽度 
+} //$offset-x的正值向右移，$offset-y的正值向下移 
+@mixin rem-sprite-pos($sprites, $name, $offset-x: 0, $offset-y: 0) { 
+	background-position: addRemUnit(nth(sprite-position($sprites, $name), 1) + $offset-x) addRemUnit(nth(sprite-position($sprites, $name), 2) + $offset-y); 
+} 
+
+@mixin makeRemSprite($fold,$item){
+	.#{$fold}-#{$item}{ 
+		$gmsprite:sprite-map($fold+"/*.png", $spacing:0, $layout: vertical); 
+		@include rem-sprite($gmsprite, $item); 
+		@include rem-sprite-size($gmsprite,$item); 
+		//@include rem-sprite-pos($sprites,face, 10, (64-48)/2); 
+	}
+}
+
+@include makeRemSprite(items,face);
+@include makeRemSprite(gmsprite,home);
+@include makeRemSprite(gmsprite,user);
+@include makeRemSprite(gmsprite,shop);
+@include makeRemSprite(gmsprite,chat);

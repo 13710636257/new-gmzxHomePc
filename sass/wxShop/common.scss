@@ -1,0 +1,176 @@
+@import "compass";
+@import "compass/layout"; //layout和reset 需要单独引用
+@import "phone/variables";
+@import "public/function";
+
+@import "resetWxshop";
+@import "sprite";
+/*首页公共变量*/
+$spacing:0.1rem; //间距
+$Main-color:#DD0045; //主要颜色
+$fontSize:pxToRem(10);//字体大小
+/* 1rem = 100px */
+.view{	
+	@include display-flex;
+	@include flex-direction(column);	
+	height: 100%;
+	background: #F7F7F7;
+	padding-bottom: $spacing*2;
+}
+.flex{
+	@include display-flex;
+	@include flex-direction(row);	
+	@include justify-content(center); /*子元素水平居中 flex-start | flex-end | center | space-between | space-around; */	
+	@include align-items(center);
+}
+.flex-column{
+	@include display-flex;
+	@include flex-direction(column);	
+	@include justify-content(center); 
+	@include align-items(center); /*子元素水平居中*/
+}
+.setion{
+    padding:$spacing $spacing 0;
+}
+.page{
+	@include display-flex(flex);
+	padding:0.3rem;
+	a{
+		&.no{
+			background:#ccc;
+			pointer-events:none; 
+			cursor:default;
+		}
+		width: 50%;
+		background:$Main-color;
+		color: #fff;
+		font-size: 0.3rem;
+		text-align: center;
+		@include border-radius(0.2rem);
+		margin: 0 0.2rem;
+		padding: 0.1rem;
+	}
+}
+#contact{
+	padding: 0.2rem;
+	& > div{
+		position: relative;
+		padding-left: 0.6rem;	
+		font-size: $fontSize*4;
+		margin-bottom: $spacing*2;
+		span{
+			border-radius: 50%;
+			text-align: center;
+			background: $Main-color;
+			position: absolute;
+			width: 0.5rem;
+			height: 0.5rem;
+			left: 0;
+			top: 50%;
+			padding-top: 0.05rem;
+			margin-top: -0.25rem;
+			i{
+				color: #fff;
+			}
+		}
+		b{
+			color: $Main-color;
+		}
+		&.foot-address{
+			span{
+				top: 0.22rem;
+			}
+			div{
+
+				margin-bottom: $spacing;
+
+				b{
+					background: $Main-color;
+					color: #fff;
+					font-size: 0.25rem;
+					padding: 0.1rem;
+					border-radius: 4px;
+					margin-right: 0.1rem;
+
+				}
+				em{
+					font-size: $fontSize*3;
+					font-weight: 700;
+					color: #000;
+				}
+				p{
+					margin-top: 0.1rem;
+					font-size: $fontSize*2.5;
+				}
+			}
+		}
+		&.foot-beian{
+			margin-top: $spacing*2;
+			text-align: center;
+			font-size: $fontSize*2;
+		}
+
+	}
+
+}
+#footer{
+	background: $Main-color;
+	padding: $spacing 0;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	left: 0;
+	z-index: 999;
+	ul{
+		li{
+			float: left;
+			width: 20%;
+			text-align: center;
+			a{
+				color: #fff;
+				font-size: $fontSize*3;
+				display: block;
+				line-height: 0.5rem;
+				i{
+					font-size: 0.5rem;
+				}
+			}
+			&.footer-menu{
+				line-height: 1.3rem;
+				span{
+					display: block;
+					width: 1rem;
+					height: 1rem;
+					margin: 0 auto;
+					background:#fff;
+					border-radius:50%;
+					border:1px solid #EC6B92;
+					i{
+						display: block;
+						line-height: 1rem;
+						color: $Main-color;
+					}
+				}
+			}
+			&.footer-zixun{
+				i{
+					position:relative;
+					em{
+						position: absolute;
+						font-size: 0.2rem;
+						width: 0.3rem;
+						height: 0.3rem;
+						background: #fff;
+						border-radius: 50%;
+						line-height: 0.3rem;
+						top: 0rem;
+						right: -0.1rem;
+						color: $Main-color;
+					}
+				}
+
+			}
+		}
+	}
+}
+

@@ -1,0 +1,5 @@
+
+// pixels to rems  使用flexible插件  1rem=100px
+@function pxToRem($px) {
+  @return $px / 100 * 1rem;
+}

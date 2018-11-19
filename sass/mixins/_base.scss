@@ -1,0 +1,6 @@
+/* 属性变换 */
+@mixin duration-easein($property:all,$duration:2s,$timingFunction:ease-in) {	
+  @include transition-property($property);
+  @include transition-duration($duration);
+  @include transition-timing-function($timingFunction);
+}

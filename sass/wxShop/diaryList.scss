@@ -1,0 +1,156 @@
+@import "wxShop/common";
+/*diary*/
+#diary{
+	margin-top: $spacing;
+	.column-title{
+		background:$Main-color;
+		padding:$spacing*2 0;
+		margin-bottom: 0;
+	}
+	.setion{
+		padding:0;
+	}
+	.diary-screen{
+		margin-bottom: $spacing*2;
+		margin-top: -0.1rem;
+		border-bottom: 1px solid #EAEAEA;
+		background:#fff;
+		ul{
+			padding:$spacing*2 0;
+			@include display-flex(flex);
+			li{
+				width: 50%;
+				text-align:center;
+				font-size:$fontSize*3;
+				@include display-flex(inline-flex);
+				border-right:1px solid #e6e6e6;
+				position:relative;
+				&:last-child{
+					border:none;
+				}
+				em{
+					position: absolute;
+					font-size: 0.3rem;
+					right: 0.2rem;
+					color: #666;
+					height: 0.3rem;
+					line-height: 0.3rem;
+					top: 50%;
+					margin-top: -0.15rem;
+					color: #666;
+				}
+				input{
+					width: 100%;
+				}
+				button{
+					background:none;
+					border:none;
+					width: 100%;
+					i{
+						font-size:$fontSize*3;
+						margin-right: $spacing;
+					}
+				}
+			}
+		}
+	}
+	.diary-list{
+		&>div{
+			padding:$spacing*2;
+			background:#fff;
+			margin-bottom: $spacing*2;
+			border-bottom: 1px solid #EAEAEA;
+			border-top: 1px solid #EAEAEA;
+			&:nth-child(1){
+				border-top:none;
+			}
+			.diary-user{
+				a{
+					float:left;
+					width:0.6rem;
+					overflow: hidden;
+					border-radius:50%;
+					img{
+						width: 100%;
+					}
+				}
+				.info{
+					margin-left: 0.7rem;
+					p{
+						font-size:$fontSize*2;
+						height: 0.32rem;
+						line-height: 0.32rem;
+						&.name{
+							color: #333;
+						}
+						&.time{
+							color: #666;
+						}
+					}
+				}
+			}
+			.diary-pic{
+				margin-top: $spacing*2;
+				a{
+					float: left;
+					width: 49%;
+					position: relative;
+					&:nth-child(1){
+						margin-right: 2%;
+					}
+					div{
+						@include border-radius(4px);
+						overflow: hidden;
+						span{
+							width: 1rem;
+							position: absolute;
+							left: 0;
+							bottom: 0;
+							font-size: $fontSize*2.3;
+							text-align: center;
+							background:#FD3967;
+							color: #fff;
+							@include border-radius(0 4px,0 4px);
+						}
+					}
+				}
+			}
+			.diary-text{
+				font-size: 0.3rem;
+				height: 0.9rem;
+				overflow: hidden;
+				margin: $spacing 0;
+				text-align:justify;
+			}
+			.diary-label{
+				color: $Main-color;
+				font-size: $fontSize*2.3;
+				i{
+					&::before{
+						@include rotate(90deg);
+					}
+				}
+				span{
+					margin-left: $spacing*2;
+				}
+			}
+		}
+	}
+	.diary-more{
+		a{
+			font-size: $fontSize*3;
+			color: #fff;
+			background: $Main-color;
+			display: block;
+			width: 3.5rem;
+			border-radius: 10px;
+			margin: 0 auto;
+			padding: $spacing;
+			text-align: center;
+		}
+	}
+}
+
+
+
+
